@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1661954805 source:c:\projetos pessoais\c-personal-projects\jogodacobra\main.c
+1662037822 source:c:\projetos pessoais\c-personal-projects\jogodacobra\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
+	<conio.h>
 
 1661985062 source:e:\programação\c-personal-projects\jogodacobra\main.c
 	<stdio.h>

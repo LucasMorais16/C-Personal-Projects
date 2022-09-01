@@ -54,16 +54,44 @@ int checkCollision(){
     }
 }
 
+void randomPointSpots(){
+    char point = 'o';
+    int i, j, numOfPoints;
+
+    if(M>=N){
+        numOfPoints = M/4;
+
+    }else{
+        numOfPoints = N/4;
+    }
+
+    for(int a = 1; a<=numOfPoints; a++){
+
+        i = rand()% M;
+        j = rand()% N;
+
+        if(map[i][j] != ' '){
+            do{
+                i = rand()% M;
+                j = rand()% M;
+
+            }while(map[i][j] != ' ');
+        }
+        map[i][j] = point;
+    }
+}
+
 int main(){
     int x, y;
-    char ready, keyboard;
-
+    char ready, keyboard1, keyboard2;
+    srand(time(NULL));
     gameOpening();
     printf("Ready?(Y/N): ");
     scanf("%c", &ready);
 
     if(ready == 'Y' || ready == 'y'){
         gameMap();
+        randomPointSpots();
         printMap();
         x = (M/2)-1; y = (N/2)-1; //initial coordinates
 
@@ -75,53 +103,57 @@ int main(){
             if(_kbhit()){
                 switch(_getch()){
                     case 'w':
-                        map[x][y] = ' ';
-                        x--;
-                        map[x][y] = 'S';
-                        keyboard = 'w';
+                        if(keyboard1 != 's' && keyboard1 != 'w'){
+                            keyboard1 = 'w';
+                            goto W;
+                        }
                         break;
                     case 'a':
-                        map[x][y] = ' ';
-                        y--;
-                        map[x][y] = 'S';
-                        keyboard = 'a';
+                        if(keyboard1 != 'd' && keyboard1 != 'a'){
+                            keyboard1 = 'a';
+                            goto A;
+                        }
                         break;
                     case 's':
-                        map[x][y] = ' ';
-                        x++;
-                        map[x][y] = 'S';
-                        keyboard = 's';
+                        if(keyboard1 != 'w' && keyboard1 != 's'){
+                            keyboard1 = 's';
+                            goto S;
+                        }
                         break;
                     case 'd':
-                        map[x][y] = ' ';
-                        y++;
-                        map[x][y] = 'S';
-                        keyboard = 'd';
+                        if(keyboard1 != 'a' && keyboard1 != 'd'){
+                            keyboard1 = 'd';
+                            goto D;
+                        }
                         break;
                 }
             }else{
-                if(keyboard == 'w'){
+                if(keyboard1 == 'w'){
+                    W:
                     map[x][y] = ' ';
                     x--;
                     map[x][y] = 'S';
                 }
-                if(keyboard == 'a'){
+                if(keyboard1 == 'a'){
+                    A:
                     map[x][y] = ' ';
                     y--;
                     map[x][y] = 'S';
                 }
-                if(keyboard == 's'){
+                if(keyboard1 == 's'){
+                    S:
                     map[x][y] = ' ';
                     x++;
                     map[x][y] = 'S';
                 }
-                if(keyboard == 'd'){
+                if(keyboard1 == 'd'){
+                    D:
                     map[x][y] = ' ';
                     y++;
                     map[x][y] = 'S';
                 }
             }
-            Sleep(50);
+            Sleep(100);
         }
 
     }
