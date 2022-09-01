@@ -53,43 +53,59 @@ char verificarGanhador(){
 }
 
 void jogadaPlayer(){
-    int x, y;
+    int x, y, p; //p eh parametro para manter o loop.
     printf("[P1]Qual posicao voce deseja?(linha(1->3) e coluna(1->3))\n");
     fflush(stdin);
 
     do{
         scanf("%d %d", &x, &y);
         x--; y--;
-        if(tabela[x][y] == ' '){
+        if(tabela[x][y] == ' ' && x>=0 && y>=0 && x<=2 && y<=2){
             tabela[x][y] = PLAYER;
             escreveTabela();
             break;
         }else{
-            printf("Posicao ja preenchida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
-            fflush(stdin);
+            if(x<0 || y<0 || x>2 || y>2){
+                escreveTabela();
+                printf("Posicao invalida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
+                fflush(stdin);
+            }else{
+                escreveTabela();
+                printf("Posicao ja preenchida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
+                fflush(stdin);
+            }
+            p = -1;
         }
 
-    }while(tabela[x][y] != ' ');
+    }while(tabela[x][y] != ' ' || p == -1);
 }
 
 void jogadaPlayer2(){
-    int x, y;
+    int x, y, p; //p eh parametro para manter o loop.
     printf("[P2]Qual posicao voce deseja?(linha(1->3) e coluna(1->3))\n");
     fflush(stdin);
 
     do{
         scanf("%d %d", &x, &y);
         x--; y--;
-        if(tabela[x][y] == ' '){
+        if(tabela[x][y] == ' ' && x>=0 && y>=0 && x<=2 && y<=2){
             tabela[x][y] = PLAYER2;
             escreveTabela();
             break;
         }else{
-            printf("Posicao ja preenchida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
-            fflush(stdin);
+            if(x<0 || y<0 || x>2 || y>2){
+                escreveTabela();
+                printf("Posicao invalida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
+                fflush(stdin);
+            }else{
+                escreveTabela();
+                printf("Posicao ja preenchida, escolha uma posicao valida! (linha(1->3) e coluna(1->3))\n");
+                fflush(stdin);
+            }
+            p = -1;
         }
 
-    }while(tabela[x][y] != ' ');
+    }while(tabela[x][y] != ' ' || p == -1);
 
     //system("pause");
 }
@@ -130,9 +146,9 @@ void jogadas(){
 void escreveTabela(){
     system("cls");
     printf(" %c | %c | %c \n", tabela[0][0], tabela[0][1], tabela[0][2]);
-    printf("--------------\n");
+    printf("-----------\n");
     printf(" %c | %c | %c \n", tabela[1][0], tabela[1][1], tabela[1][2]);
-    printf("--------------\n");
+    printf("-----------\n");
     printf(" %c | %c | %c \n", tabela[2][0], tabela[2][1], tabela[2][2]);
 }
 
