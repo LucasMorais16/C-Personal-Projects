@@ -1,0 +1,4 @@
+﻿  Main.cpp
+E:\Visual Studio 22\Allegro5\JogoDaMemoria\Main.cpp(107,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Visual Studio 22\Allegro5\JogoDaMemoria\Main.cpp(126,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  JogoDaMemoria.vcxproj -> E:\Visual Studio 22\Allegro5\x64\Debug\JogoDaMemoria.exe
